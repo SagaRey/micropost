@@ -1,0 +1,27 @@
+default: &default
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+
+sqlite3: &sqlite3
+  <<: *default
+  adapter: sqlite3
+  database: microposttest.sqlite3
+
+postgresql: &postgresql
+  <<: *default
+  adapter: postgresql
+  database: micropostdev
+  username: dev
+  password: dev
+  host: localhost
+  port: 5432
+
+development:
+  <<: *postgresql
+
+test:
+  <<: *sqlite3
+
+production:
+  <<: *postgresql
