@@ -63,4 +63,13 @@ class UsersControllerTest < ActionController::TestCase
                                             admin: 1 }
     assert_not @other_user.reload.admin?
   end
+
+  test "should redirect show when user unactivated" do
+    @user.update_attribute(:activated, true)
+    @other_user.update_attribute(:activated, false)
+    get :show, id: @user
+    assert_template 'users/show'
+    get :show, id: @other_user
+    assert_redirected_to root_url
+  end
 end
