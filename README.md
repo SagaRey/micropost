@@ -1,4 +1,4 @@
-# Ruby on Rails Tutorial: micropost
+# Ruby on Rails Tutorial: Micropost
 
 This is the sample application for the
 [*Ruby on Rails Tutorial:
