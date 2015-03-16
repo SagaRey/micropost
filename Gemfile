@@ -14,6 +14,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'carrierwave'
+gem 'mini_magick', '~> 3.8.1'
 
 group :development, :test do
   gem 'byebug'
