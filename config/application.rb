@@ -22,5 +22,8 @@ module Sample
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    ENV['PATH'] = "/usr/bin:#{ENV['PATH']}"
+    # config.delete_tmp_file_after_storage = false
+    # config.delete_cache_id_after_storage = false
   end
 end
