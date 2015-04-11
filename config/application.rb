@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Sample
   class Application < Rails::Application
+
+    ENV['PATH'] = "/usr/bin:#{ENV['PATH']}"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -22,8 +24,8 @@ module Sample
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    ENV['PATH'] = "/usr/bin:#{ENV['PATH']}"
     # config.delete_tmp_file_after_storage = false
     # config.delete_cache_id_after_storage = false
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
