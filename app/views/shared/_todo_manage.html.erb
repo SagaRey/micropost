@@ -27,7 +27,7 @@
   </div>
 </div>
 <script>
-  $("[href='/users']").parents('li').after("<li><a data-toggle='modal' data-target='#todo-manage' href>Todo</a></li>");
+  $("#users-li").parents('li').after("<li><a data-toggle='modal' data-target='#todo-manage' href>Todo</a></li>");
   $("#delete-todo").hide();
   function startDrag(evt){
     evt.dataTransfer.setData("dragId", evt.target.id);
