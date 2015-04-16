@@ -1,0 +1,14 @@
+book:
+  content: "read a book"
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+test:
+  content: "take a test"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+home:
+  content: "go home"
+  created_at: <%= 10.minutes.ago %>
+  user: lana

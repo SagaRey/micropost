@@ -1,0 +1,45 @@
+<div class="modal fade" id="todo-manage" tabindex="-1" role="dialog" aria-labelledby="todo-manage-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="todo-manage-label">TODO</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for([@todo.user, @todo], remote: true) do |f| %>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-primary input-lg" type="submit">Do</button>
+            </span>
+            <%= f.text_field :content, id: "new-todo", class: "form-control input-lg", placeholder: "What needs to be done?", autofocus: ""  %>
+          </div>
+        </div>
+        <% end %>
+        <div id="todo-list">
+        <%= render 'shared/todo_list' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-todo" type="button" class="btn btn-lg btn-danger btn-block" ondrop="onDrop(event)" ondragover="onDragOver(event)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("[href='/users']").parents('li').after("<li><a data-toggle='modal' data-target='#todo-manage' href>Todo</a></li>");
+  $("#delete-todo").hide();
+  function startDrag(evt){
+    evt.dataTransfer.setData("dragId", evt.target.id);
+    $("#delete-todo").slideDown();
+  };
+  function endDrag(evt){
+    $("#delete-todo").slideUp();
+  };
+  function onDragOver(evt){
+    evt.preventDefault();
+  };
+  function onDrop(evt){
+    $('#' + evt.dataTransfer.getData("dragId")).find('a').click();
+  };
+</script>

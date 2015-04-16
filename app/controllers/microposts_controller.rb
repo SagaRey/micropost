@@ -9,6 +9,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
+      @todo = current_user.todos.build
       # @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
       # flash[:danger] = @micropost.errors.full_messages.join('<br/>')
